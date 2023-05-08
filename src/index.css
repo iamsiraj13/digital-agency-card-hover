@@ -29,14 +29,36 @@ body {
 
 .card {
   position: relative;
+  transition: all 0.7s;
 
 }
 
-.card:after {
+.card-inner {
+  transition: all 0.8s;
+}
+
+.card-inner p {
+  display: none
+}
+
+.card-inner-top {
+  transition: all 0.8s;
+}
+
+.card:hover .card-inner .card-inner-top {
+  display: flex;
+  align-items: center;
+}
+
+.card:hover .card-inner p {
+  display: block;
+}
+
+.card:hover.card:after {
   content: "";
   position: absolute;
   width: 100%;
-  height: 200px;
+  height: 300px;
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
 
 }

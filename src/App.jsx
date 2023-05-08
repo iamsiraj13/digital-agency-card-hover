@@ -40,8 +40,8 @@ export default function HeroSlider() {
                     className="min-h-[551px] w-full border border-black flex flex-col justify-end  text-white card "
                     onMouseEnter={() => setId(index)}
                   >
-                    <div className="z-40 p-4">
-                      <div>
+                    <div className="card-inner z-40 p-4">
+                      <div className="card-inner-top  ">
                         <h3 className="text-[80px] font-bold leading-tight text">
                           0{item.id}
                         </h3>
@@ -49,7 +49,7 @@ export default function HeroSlider() {
                           {item.title}
                         </h2>
                       </div>
-                      <p className="text-black hidden">
+                      <p className="text-black ">
                         Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit. Repellendus suscipit in unde commodi architecto?
                         Amet quo incidunt corporis dolorum voluptates.{" "}
