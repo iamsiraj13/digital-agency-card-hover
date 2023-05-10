@@ -4,22 +4,22 @@ import three from "./assets/3.jpg";
 import four from "./assets/4.jpg";
 const data = [
   {
-    id: 1,
+    id: 0,
     img: one,
     title: "Branding and digital stategis",
   },
   {
-    id: 2,
+    id: 1,
     img: two,
     title: "Branding and digital stategis",
   },
   {
-    id: 3,
+    id: 2,
     img: three,
     title: "Branding and digital stategis",
   },
   {
-    id: 4,
+    id: 3,
     img: four,
     title: "Branding and digital stategis",
   },

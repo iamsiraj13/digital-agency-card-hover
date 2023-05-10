@@ -1,22 +1,19 @@
+import { Swiper, SwiperSlide } from "swiper/react";
 import data from "./data";
-// Import Swiper styles
 
-// import required modules
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 import { useState } from "react";
 
-export default function HeroSlider() {
-  const [id, setId] = useState(0);
+const Slider = () => {
+  const [activeSlide, setActiveSlide] = useState(0);
   const [show, setShow] = useState(false);
 
   return (
     <>
-      <div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-        <div className="wave"></div>
-      </div>
-
-      <div>
+      <div className="relative w-full  ">
+        {/* header text  */}
         <div className="relative">
           <h3 className="text-[150px] font-extrabold text2 capitalize text-center font-poppins  ">
             digital agency
@@ -28,41 +25,47 @@ export default function HeroSlider() {
 
         {/* grid content  */}
         <div
-          className={`w-full h-[551px] transition-all duration-700 relative overflow-hidden`}
+          className={`w-full h-[651px] transition-all duration-700 relative overflow-hidden`}
         >
-          <div className={"w-full h-[551px] transition-all duration-1000"}>
+          <div className={"w-full h-full absolute left-0 top-0 right-0"}>
             <img
-              src={data[id].img}
-              alt="bg image"
+              src={data[activeSlide].img}
+              alt=""
               className={`${
                 show === true
-                  ? "w-full h-full object-cover animate__animated animate__bounce"
-                  : "w-full h-full object-cover"
+                  ? "w-full h-full object-cover img-anim  "
+                  : "w-full h-full object-cover "
               }`}
             />
           </div>
-          <div className="w-full h-full absolute left-0 top-0">
-            <div className="grid grid-cols-4  ">
-              {data.map((item, index) => (
-                <>
-                  <div
-                    key={index}
-                    className="min-h-[551px] w-full border border-black flex flex-col justify-end  text-white card transition-all duration-700 "
-                    onMouseEnter={() => {
-                      setShow(true);
-                      setId(item.id);
-                    }}
-                    onMouseLeave={() => setShow(false)}
-                  >
+
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={20}
+            pagination={{
+              clickable: true,
+            }}
+            className="myswiper"
+          >
+            {data.map((data, index) => (
+              <>
+                <SwiperSlide
+                  className=""
+                  key={index}
+                  onMouseEnter={() => {
+                    setShow(true);
+                    setActiveSlide(data.id);
+                  }}
+                  onMouseOut={() => setShow(false)}
+                >
+                  <div className="  h-full w-full   flex flex-col justify-end  text-white card transition-all duration-700 ">
                     <div className="card-inner z-40 p-4">
                       <div className="card-inner-top  relative">
                         <h3 className="text-[80px] leading-tight text font-inter font-extrabold">
-                          {/* 0{item.id + 1} */}
-                          01
+                          0{data.id + 1}
                         </h3>
                         <h2 className="font-inter mt-[-10px] font-semibold text-[30px] text-black leading-tight">
-                          {/* {item.title} */}
-                          good morning something
+                          {data.title}
                         </h2>
                       </div>
                       <p className="text-black font-inter ">
@@ -72,10 +75,10 @@ export default function HeroSlider() {
                       </p>
                     </div>
                   </div>
-                </>
-              ))}
-            </div>
-          </div>
+                </SwiperSlide>
+              </>
+            ))}
+          </Swiper>
         </div>
         <div>
           <h3 className="font-poppins font-extrabold text-[#27464D] text-[150px] text2 capitalize text-center">
@@ -85,4 +88,6 @@ export default function HeroSlider() {
       </div>
     </>
   );
-}
+};
+
+export default Slider;
